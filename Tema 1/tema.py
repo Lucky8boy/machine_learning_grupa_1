@@ -13,9 +13,9 @@ if not os.path.isfile('airbnb.csv'):  # if dataset exists, it means that I only 
 
     for _ in range(record_to_gen):
         data['Neighborhood'].append(random.choice(['A', 'B', 'C', 'D', 'E']))
-        data['Price'].append(random.randint(80, 150))
-        data['Occupancy'].append(random.randint(50, 90))
-        data['Review_Score'].append(round(random.uniform(3.5, 5.0), 1))
+        data['Price'].append(random.choice([100, 120, 80, 150, 90]))
+        data['Occupancy'].append(random.choice([80, 60, 90, 50, 70]))
+        data['Review_Score'].append(random.choice([4.5, 4.2, 4.8, 3.9, 4.6]))
 
     df = pd.DataFrame(data)
     print(df)
