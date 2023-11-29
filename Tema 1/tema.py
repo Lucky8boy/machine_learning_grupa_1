@@ -24,6 +24,8 @@ if not os.path.isfile('airbnb.csv'):  # if dataset exists, it means that I only 
 else:  # dataset already exists
     df = pd.read_csv('airbnb.csv')
 
+df = df.sort_values(by='Neighborhood')
+
 # plots
 # prices in neighborhoods
 plt.figure(figsize=(13, 7))
@@ -43,4 +45,20 @@ plt.show()
 plt.figure(figsize=(10, 8))
 sns.scatterplot(x='Review_Score', y='Price', data=df, hue='Neighborhood', palette='mako', s=200)
 plt.title('The influences of reviews in different neighborhoods')
+plt.show()
+
+# plot for prices / neighborhood
+plt.figure(figsize=(13, 7))
+sns.lineplot(x='Neighborhood', y='Price', data=df)
+plt.title('Prices depending on the neighborhoods')
+plt.xlabel('Price')
+plt.ylabel('Neighborhood')
+plt.show()
+
+# neighborhood distribution
+plt.figure(figsize=(10, 6))
+sns.histplot(df['Neighborhood'], bins=20, kde=True, color='skyblue')
+plt.title('Neighborhoods distribution')
+plt.xlabel('Neighborhood')
+plt.ylabel('Number of places per neighborhoods')
 plt.show()
